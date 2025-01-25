@@ -8,6 +8,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        fontSize: {
+          'feature-text': ['13px', { lineHeight: '18px', letterSpacing: '-0.08px' }],
+          'feature-text-large': ['17px', { lineHeight: '22px', letterSpacing: '-0.1px' }],
+          'feature-text-small': ['10px', { lineHeight: '14px', letterSpacing: '-0.05px' }],
+        },
+        textColor: {
+          'feature-white': '#FFFFFF',
+        },
+        gold: '#FFD700',
         border: withOpacity('border'),
         input: withOpacity('input'),
         ring: withOpacity('ring'),
