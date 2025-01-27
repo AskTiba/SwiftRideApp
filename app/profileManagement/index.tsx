@@ -22,7 +22,7 @@ const ListItem: React.FC<ListItemProps> = ({ text, leftIcon, rightIcon, onPress,
       center
         ? 'items-center justify-center py-3'
         : 'flex-row items-center justify-between px-4 py-3'
-    } border-b-[0.5px] border-[#F19363E]`}>
+    } mb-2 rounded-lg bg-[#171c1f]`}>
     <View className="flex-row items-center gap-4">
       {leftIcon}
       <Text className="text-medium text-white">{text}</Text>
@@ -37,7 +37,7 @@ const handleItemPress = (text: string) => {
       router.push('/profileManagement/settings');
       break;
     case 'Login and security':
-      router.push('/profileManagement/;oginAndSecurity');
+      router.push('/profileManagement/loginAndSecurity');
       break;
     case 'Visit help centre':
       router.push('/profileManagement/helpCentre');
@@ -92,7 +92,7 @@ const ProfileScreen: React.FC = () => {
       </TouchableOpacity>
 
       <Text className="text-medium my-4 px-4 text-white">App Settings</Text>
-      <View className="rounded-lg bg-[#171c1f]">
+      <View>
         {Items.map((item) => (
           <ListItem
             key={item.id}

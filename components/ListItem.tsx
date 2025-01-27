@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Pressable, StyleSheet } from 'react-native';
+import { Pressable, Text, View } from 'react-native';
 import DownChevron from '~/assets/svgs/down_chevron';
 import UpChevron from '~/assets/svgs/up_chevron';
 import User from '~/assets/svgs/user';
@@ -12,17 +12,11 @@ interface ListItemProps {
   rightText?: string;
 
   // Styling props
-  containerStyle?: object;
-  textStyle?: object;
-  rightTextStyle?: object;
-  pressableStyle?: object;
+  iconColor?: string;
 
   // Functional props
-  iconColor?: string;
   showToggle?: boolean;
   disabled?: boolean;
-
-  // Spacing & alignment
   gap?: number;
 
   // Callbacks
@@ -32,6 +26,7 @@ interface ListItemProps {
   // Accessibility
   accessibilityLabel?: string;
   accessibilityHint?: string;
+  accessibilityRole?: 'button' | 'link' | 'none';
 }
 
 const ListItem: React.FC<ListItemProps> = ({
@@ -39,10 +34,6 @@ const ListItem: React.FC<ListItemProps> = ({
   rightIcon,
   text,
   rightText,
-  containerStyle = {},
-  textStyle = {},
-  rightTextStyle = {},
-  pressableStyle = {},
   iconColor = '#fdd700',
   showToggle = false,
   disabled = false,
@@ -51,14 +42,16 @@ const ListItem: React.FC<ListItemProps> = ({
   onToggle,
   accessibilityLabel,
   accessibilityHint,
+  accessibilityRole = 'button',
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const handlePress = () => {
     if (disabled) return;
     if (showToggle) {
-      setIsExpanded(!isExpanded);
-      onToggle?.(!isExpanded);
+      const newState = !isExpanded;
+      setIsExpanded(newState);
+      onToggle?.(newState);
     }
     onPress?.();
   };
@@ -67,20 +60,27 @@ const ListItem: React.FC<ListItemProps> = ({
     <Pressable
       onPress={handlePress}
       disabled={disabled}
-      style={[styles.pressable, { opacity: disabled ? 0.6 : 1 }, pressableStyle]}
+      className={`rounded-lg border p-3 ${
+        disabled ? 'opacity-60' : 'opacity-100'
+      } active:opacity-80`}
       accessibilityLabel={accessibilityLabel}
-      accessibilityHint={accessibilityHint}>
-      <View style={[styles.container, containerStyle]}>
+      accessibilityHint={accessibilityHint}
+      accessibilityRole={accessibilityRole}>
+      <View className="flex-row items-center justify-between">
         {/* Left section */}
-        <View style={[styles.leftSection, { gap }]}>
+        <View style={{ gap }} className="flex-row items-center">
           {leftIcon || <User color={iconColor} />}
-          {text && <Text style={[styles.text, { color: iconColor }, textStyle]}>{text}</Text>}
+          {text && (
+            <Text className={`text-base font-medium`} style={{ color: iconColor }}>
+              {text}
+            </Text>
+          )}
         </View>
 
         {/* Right section */}
-        <View style={[styles.rightSection, { gap }]}>
+        <View style={{ gap }} className="flex-row items-center">
           {rightText && (
-            <Text style={[styles.rightText, { color: iconColor }, rightTextStyle]}>
+            <Text className={`text-sm font-light`} style={{ color: iconColor }}>
               {rightText}
             </Text>
           )}
@@ -99,33 +99,4 @@ const ListItem: React.FC<ListItemProps> = ({
   );
 };
 
-const styles = StyleSheet.create({
-  pressable: {
-    padding: 8,
-    borderRadius: 6,
-    borderWidth: 1,
-    borderColor: '#fdd700',
-  },
-  container: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-  },
-  leftSection: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  rightSection: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  text: {
-    fontSize: 16,
-  },
-  rightText: {
-    fontSize: 14,
-    fontWeight: '300',
-  },
-});
-
-export default ListItem;
+export default React.memo(ListItem);
