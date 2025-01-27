@@ -121,6 +121,13 @@
     letter-spacing: -0.08px;
   }
 
+  .text-tiny {
+    font-size: 12px;
+    color: white;
+    font-weight: 400;
+    line-height: 16px;
+  }
+
   .text-heading {
     font-size: 20px;
     color: white;

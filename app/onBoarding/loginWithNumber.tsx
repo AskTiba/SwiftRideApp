@@ -28,7 +28,7 @@ export default function LoginwithNumber() {
   return (
     <View className="px-4">
       <Text className="px-4 pt-3 text-xs leading-4 dark:text-white">Enter your mobile number</Text>
-      <View>
+      <View className="px-4">
         <Controller
           control={control}
           rules={{
@@ -41,12 +41,12 @@ export default function LoginwithNumber() {
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
-              className="boredr: text-medium placeholder:text-medium border-b border-[#34344A] px-4 py-3"
+              className="boredr: text-medium placeholder:text-medium border-b border-[#34344A] py-3"
             />
           )}
           name="phoneNumber"
         />
-        {errors.phoneNumber && <Text>This is required.</Text>}
+        {errors.phoneNumber && <Text className="text-white">This is required.</Text>}
       </View>
       <View className="mt-14">
         <Button title="Continue" onPress={handleSubmit(onSubmit)} />

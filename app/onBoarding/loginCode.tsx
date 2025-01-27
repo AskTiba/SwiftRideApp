@@ -24,7 +24,7 @@ export default function LoginCode() {
       <Text className="text-heading px-4 pt-4 leading-4 dark:text-white">
         Welcome back {'{userName}'}
       </Text>
-      <View>
+      <View className='px-4'>
         <Controller
           control={control}
           rules={{
@@ -37,12 +37,12 @@ export default function LoginCode() {
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
-              className="boredr: text-medium placeholder:text-medium border-b border-[#34344A] px-4 py-3"
+              className="boredr: text-medium placeholder:text-medium border-b border-[#34344A] py-3"
             />
           )}
           name="code"
         />
-        {errors.code && <Text>This is required.</Text>}
+        {errors.code && <Text className="text-white">This is required.</Text>}
       </View>
       <Text className="px-4 pt-3 text-xs leading-4 dark:text-white">
         Code sent via SMS to {`{number}`}

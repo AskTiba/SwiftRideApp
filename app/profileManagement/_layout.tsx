@@ -8,8 +8,8 @@ export default function ProfileManagementLayout() {
     <Stack
       screenOptions={{
         headerTitleStyle: {
-          fontSize: 28,
-          fontWeight: 700,
+          fontSize: 17,
+          fontWeight: 600,
         },
         headerLeft: () => (
           <TouchableOpacity onPressOut={() => router.back()}>
