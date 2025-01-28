@@ -24,7 +24,7 @@ export default function LoginCode() {
       <Text className="text-heading px-4 pt-4 leading-4 dark:text-white">
         Welcome back {'{userName}'}
       </Text>
-      <View className='px-4'>
+      <View className="px-4">
         <Controller
           control={control}
           rules={{
@@ -51,7 +51,7 @@ export default function LoginCode() {
       <View className="my-3 mt-14">
         <Button onPress={handleCode} title="Continue" />
       </View>
-      <View className="my-3 ">
+      <View className="">
         <Button
           className="border border-[#32324A] bg-transparent"
           title="I did not receive a code"

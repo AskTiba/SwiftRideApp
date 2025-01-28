@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity } from 'react-native';
 import React, { useState } from 'react';
-import { Stack } from 'expo-router';
+import { router, Stack } from 'expo-router';
 import Toggle from '~/components/Toggle';
 import ListItem from '~/components/ListItem';
 import Notification from '~/assets/svgs/notification';
@@ -29,7 +29,9 @@ export default function Settings() {
           </View>
           <Toggle isOn={!isToggleOn} onToggle={() => setIsToggleOn(!isToggleOn)} />
         </View>
-        <TouchableOpacity className="mb-2 flex-row items-center justify-between rounded-lg bg-[#171c1f] px-4 py-2">
+        <TouchableOpacity
+          onPress={() => router.push('/profileManagement/privacyCentre')}
+          className="mb-2 flex-row items-center justify-between rounded-lg bg-[#171c1f] px-4 py-2">
           <View className="flex-1 flex-row items-center gap-4">
             <Lock color={'#FFF'} />
             <View className="">
@@ -39,7 +41,9 @@ export default function Settings() {
           </View>
           <RightChevron color={'#FFF'} />
         </TouchableOpacity>
-        <TouchableOpacity className="mb-2 flex-row items-center justify-between rounded-lg bg-[#171c1f] px-4 py-2">
+        <TouchableOpacity
+          onPress={() => router.push('/profileManagement/appearance')}
+          className="mb-2 flex-row items-center justify-between rounded-lg bg-[#171c1f] px-4 py-2">
           <View className="flex-1 flex-row items-center gap-4">
             <SunMoon color={'#FFF'} />
             <View className="">
@@ -49,7 +53,9 @@ export default function Settings() {
           </View>
           <RightChevron color={'#FFF'} />
         </TouchableOpacity>
-        <TouchableOpacity className="flex-row items-center justify-between rounded-lg bg-[#171c1f] px-4 py-2">
+        <TouchableOpacity
+          onPress={() => router.push('/profileManagement/communication')}
+          className="flex-row items-center justify-between rounded-lg bg-[#171c1f] px-4 py-2">
           <View className="flex-1 flex-row items-center gap-4">
             <Phone color={'#FFF'} />
             <View className="">
