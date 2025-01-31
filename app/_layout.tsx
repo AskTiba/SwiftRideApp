@@ -4,7 +4,7 @@ import 'expo-dev-client';
 import { ActionSheetProvider } from '@expo/react-native-action-sheet';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
 import { ThemeProvider as NavThemeProvider } from '@react-navigation/native';
-import { router, Stack } from 'expo-router';
+import { router, SplashScreen, Stack } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
@@ -19,6 +19,9 @@ export {
   // Catch any errors thrown by the Layout component.
   ErrorBoundary,
 } from 'expo-router';
+
+// Prevent the splash screen from auto-hiding before asset loading is complete.
+SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   useInitialAndroidBarSync();
@@ -40,6 +43,7 @@ export default function RootLayout() {
               <Stack screenOptions={SCREEN_OPTIONS}>
                 <Stack.Screen name="index" options={DRAWER_OPTIONS} />
                 <Stack.Screen name="profileManagement" options={{ headerShown: false }} />
+                <Stack.Screen name="home" options={{ headerShown: false }} />
                 <Stack.Screen name="onBoarding" options={{ headerShown: false }} />
                 <Stack.Screen name="(drawer)" options={DRAWER_OPTIONS} />
                 <Stack.Screen name="modal" options={MODAL_OPTIONS} />

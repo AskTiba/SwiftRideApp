@@ -25,6 +25,11 @@ export default function LoginwithNumber() {
     handleSubmit(onSubmit);
     router.push('/onBoarding/carousel');
   };
+  const handleApple = () => {
+    handleSubmit(onSubmit);
+    // router.push('/home');
+    router.push('/home/mapbox');
+  };
   return (
     <View className="px-4">
       <Text className="px-4 pt-3 text-xs leading-4 dark:text-white">Enter your mobile number</Text>
@@ -67,7 +72,7 @@ export default function LoginwithNumber() {
           className="border border-[#32324A] bg-transparent"
           leftIcon={<Apple />}
           title="Continue with Apple"
-          onPress={handleSubmit(onSubmit)}
+          onPress={handleApple}
         />
       </View>
     </View>
